@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moonlightstore/commons.dart';
 import 'package:moonlightstore/widgets/categories.dart';
+import 'package:moonlightstore/widgets/feature_products.dart';
 import 'package:moonlightstore/widgets/title.dart';
 
 class Home extends StatefulWidget {
@@ -85,104 +86,96 @@ class _HomeState extends State<Home> {
           //Featured products
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: CustomText(text: "Featured Food", size: 20,color: grey,),
+            child: CustomText(text: "Featured Products", size: 20,color: grey,),
           ),
           
           //slide  featured products
-         Padding(
-           padding: const EdgeInsets.all(8.0),
-           child: Container(
-             height: 240,
-             child: ListView.builder(
-               scrollDirection: Axis.horizontal,
-               itemCount: 3,
-                itemBuilder: (_,index){
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                       height: 240,
-                       width: 200,
-                       decoration: BoxDecoration(
-                          color: white,
-                          boxShadow: [
-                               BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  offset: Offset(15,15),
-                                  blurRadius: 30
-                    )
-                ]
-              ),
-                        child: Column(
-                          children: [
-                            Image.asset("images/m2.jpg",height: 140,width: 140,),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: CustomText(text: "Some food", size: 16),
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(30),
-                                              color: white,
-                                              boxShadow: [
-                                                  BoxShadow(
-                                                      color: Colors.grey.shade300,
-                                                      offset: Offset(1,1),
-                                                      blurRadius: 4
-                    )
-                ]
-              ),
-                                  child: Padding(
-                                     padding: const EdgeInsets.all(8.0),
-                                     child: 
-                                       Icon(Icons.favorite_border,size: 16,color: red,),
-                                ),
-                                ),
-                                
-                              ],
-                            ),
-                      
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 8.0),
-                                      child: CustomText(text: "4.7", size: 14,color: grey,),
-                                    ),
-                                    SizedBox(width: 2,),
-                                    Icon(Icons.star,color: red,size: 16,),
-                                    Icon(Icons.star,color: red,size: 16,),
-                                    Icon(Icons.star,color: red,size: 16,),
-                                    Icon(Icons.star,color: red,size: 16,),
-                                    Icon(Icons.star,color: grey,size: 16,),
-                                  ],
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: CustomText(text: "Sh.200", size: 16,weight: FontWeight.bold,),
-                                ),
-                              ],
-                            )
-                          ],
-                        )
+          FeaturedProducts(),
 
-            )
-               
-                      
-                      ); 
-                    }
-               ),
-           ),
-         )
+          //Popular products
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CustomText(text: "Popular products", size: 20,color: grey,),
+          ),
           
+          Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 8,right: 8),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset("images/p1.jpg")),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                   children: [
+                     Padding(
+                       padding: const EdgeInsets.all(8.0),
+                       child: Icon(Icons.favorite,color: red,),
+                     ),
+                     Container(
+                       width:  50,
+                       decoration: BoxDecoration(color: white),
+                     )
+
+                   ],
+                ),
+              ),
+            
+            ],
+          ),
+
+
           ],
       ),
       
-      )
+      ),
+      //bottom navigation area
+      bottomNavigationBar: BottomNavigationBar(
+        // new
+       currentIndex: 0, // new
+       items: [
+         new BottomNavigationBarItem(
+           icon: Icon(Icons.home),
+           title: Text('Home'),
+         ),
+         new BottomNavigationBarItem(
+           icon: Icon(Icons.mail),
+           title: Text('Messages'),
+         ),
+         new BottomNavigationBarItem(
+           icon: Icon(Icons.person),
+           title: Text('Profile')
+         )
+       ],
+     ),
+      
+      // bottomNavigationBar: Container(
+      //   color: white,
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //     children: [
+      //       Padding(
+      //         padding: const EdgeInsets.all(8.0),
+      //         child: Image.asset("images/home.png",width: 26,height: 26,),
+      //       ),
+      //         Padding(
+      //         padding: const EdgeInsets.all(8.0),
+      //         child: Image.asset("images/target.png",width: 26,height: 26,),
+      //       ),
+      //         Padding(
+      //         padding: const EdgeInsets.all(8.0),
+      //         child: Image.asset("images/shopping-bag.png",width: 26,height: 26,),
+      //       ),
+      //         Padding(
+      //         padding: const EdgeInsets.all(8.0),
+      //         child: Image.asset("images/avatar1.png",width: 26,height: 26,),
+      //       ) ],
+      //   ),
+      // ),
+   
     );
   }
 }

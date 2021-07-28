@@ -1,9 +1,10 @@
 class Product{
-  final Image;
+  final image;
   final name;
   final rating;
   final vendor;
+  final price;
   final wishlist;
 
-  Product({this.Image,this.name,this.rating,this.vendor,this.wishlist});
+  Product({this.image,this.name,this.wishlist,this.rating,this.vendor,this.price});
 }
